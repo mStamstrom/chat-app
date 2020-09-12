@@ -9,6 +9,7 @@ const ChatEntry = ({addMessage}) => {
   }
 
   const onClick = () => {
+    setMessage('');
     addMessage(message);
   }
 
