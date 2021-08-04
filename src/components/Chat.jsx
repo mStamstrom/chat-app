@@ -1,7 +1,26 @@
 import React, { useState } from 'react';
 import styles from './Chat.module.css';
-import ChatEntry from './ChatEntry';
 import ChatHistory from './ChatHistory';
+
+const ChatEntry = ({addMessage}) => {
+  const [ message, setMessage ] = useState('');
+
+  const onChangeMessage = (e) => {
+    setMessage(e.target.value);
+  }
+
+  const onClick = () => {
+    setMessage('');
+    addMessage(message);
+  }
+
+  return (
+    <div className={styles["chat-entry"]}>
+      <textarea rows="5" className={styles["message-area"]} value={message} onChange={onChangeMessage}/>
+      <button onClick={onClick} className={styles["send-button"]}>Send message</button>
+    </div>
+  );
+}
 
 function Chat() {
   const [chatHistory, setChatHistory] = useState([]);
